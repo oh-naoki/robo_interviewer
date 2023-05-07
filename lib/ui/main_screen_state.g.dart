@@ -10,12 +10,19 @@ _$_MainScreenState _$$_MainScreenStateFromJson(Map<String, dynamic> json) =>
     _$_MainScreenState(
       recognizing: json['recognizing'] as bool? ?? false,
       recognizeFinished: json['recognizeFinished'] as bool? ?? false,
-      text: json['text'] as String? ?? "",
+      userInput: json['userInput'] as String? ?? "---",
+      aiResponse: json['aiResponse'] as String? ?? "---",
+      history: (json['history'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const <String>[],
     );
 
 Map<String, dynamic> _$$_MainScreenStateToJson(_$_MainScreenState instance) =>
     <String, dynamic>{
       'recognizing': instance.recognizing,
       'recognizeFinished': instance.recognizeFinished,
-      'text': instance.text,
+      'userInput': instance.userInput,
+      'aiResponse': instance.aiResponse,
+      'history': instance.history,
     };

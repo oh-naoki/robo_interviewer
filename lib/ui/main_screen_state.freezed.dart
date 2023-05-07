@@ -22,7 +22,9 @@ MainScreenState _$MainScreenStateFromJson(Map<String, dynamic> json) {
 mixin _$MainScreenState {
   bool get recognizing => throw _privateConstructorUsedError;
   bool get recognizeFinished => throw _privateConstructorUsedError;
-  String get text => throw _privateConstructorUsedError;
+  String get userInput => throw _privateConstructorUsedError;
+  String get aiResponse => throw _privateConstructorUsedError;
+  List<String> get history => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +38,12 @@ abstract class $MainScreenStateCopyWith<$Res> {
           MainScreenState value, $Res Function(MainScreenState) then) =
       _$MainScreenStateCopyWithImpl<$Res, MainScreenState>;
   @useResult
-  $Res call({bool recognizing, bool recognizeFinished, String text});
+  $Res call(
+      {bool recognizing,
+      bool recognizeFinished,
+      String userInput,
+      String aiResponse,
+      List<String> history});
 }
 
 /// @nodoc
@@ -54,7 +61,9 @@ class _$MainScreenStateCopyWithImpl<$Res, $Val extends MainScreenState>
   $Res call({
     Object? recognizing = null,
     Object? recognizeFinished = null,
-    Object? text = null,
+    Object? userInput = null,
+    Object? aiResponse = null,
+    Object? history = null,
   }) {
     return _then(_value.copyWith(
       recognizing: null == recognizing
@@ -65,10 +74,18 @@ class _$MainScreenStateCopyWithImpl<$Res, $Val extends MainScreenState>
           ? _value.recognizeFinished
           : recognizeFinished // ignore: cast_nullable_to_non_nullable
               as bool,
-      text: null == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
+      userInput: null == userInput
+          ? _value.userInput
+          : userInput // ignore: cast_nullable_to_non_nullable
               as String,
+      aiResponse: null == aiResponse
+          ? _value.aiResponse
+          : aiResponse // ignore: cast_nullable_to_non_nullable
+              as String,
+      history: null == history
+          ? _value.history
+          : history // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ) as $Val);
   }
 }
@@ -81,7 +98,12 @@ abstract class _$$_MainScreenStateCopyWith<$Res>
       __$$_MainScreenStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool recognizing, bool recognizeFinished, String text});
+  $Res call(
+      {bool recognizing,
+      bool recognizeFinished,
+      String userInput,
+      String aiResponse,
+      List<String> history});
 }
 
 /// @nodoc
@@ -97,7 +119,9 @@ class __$$_MainScreenStateCopyWithImpl<$Res>
   $Res call({
     Object? recognizing = null,
     Object? recognizeFinished = null,
-    Object? text = null,
+    Object? userInput = null,
+    Object? aiResponse = null,
+    Object? history = null,
   }) {
     return _then(_$_MainScreenState(
       recognizing: null == recognizing
@@ -108,10 +132,18 @@ class __$$_MainScreenStateCopyWithImpl<$Res>
           ? _value.recognizeFinished
           : recognizeFinished // ignore: cast_nullable_to_non_nullable
               as bool,
-      text: null == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
+      userInput: null == userInput
+          ? _value.userInput
+          : userInput // ignore: cast_nullable_to_non_nullable
               as String,
+      aiResponse: null == aiResponse
+          ? _value.aiResponse
+          : aiResponse // ignore: cast_nullable_to_non_nullable
+              as String,
+      history: null == history
+          ? _value._history
+          : history // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -122,7 +154,10 @@ class _$_MainScreenState implements _MainScreenState {
   const _$_MainScreenState(
       {this.recognizing = false,
       this.recognizeFinished = false,
-      this.text = ""});
+      this.userInput = "---",
+      this.aiResponse = "---",
+      final List<String> history = const <String>[]})
+      : _history = history;
 
   factory _$_MainScreenState.fromJson(Map<String, dynamic> json) =>
       _$$_MainScreenStateFromJson(json);
@@ -135,11 +170,22 @@ class _$_MainScreenState implements _MainScreenState {
   final bool recognizeFinished;
   @override
   @JsonKey()
-  final String text;
+  final String userInput;
+  @override
+  @JsonKey()
+  final String aiResponse;
+  final List<String> _history;
+  @override
+  @JsonKey()
+  List<String> get history {
+    if (_history is EqualUnmodifiableListView) return _history;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_history);
+  }
 
   @override
   String toString() {
-    return 'MainScreenState(recognizing: $recognizing, recognizeFinished: $recognizeFinished, text: $text)';
+    return 'MainScreenState(recognizing: $recognizing, recognizeFinished: $recognizeFinished, userInput: $userInput, aiResponse: $aiResponse, history: $history)';
   }
 
   @override
@@ -151,13 +197,17 @@ class _$_MainScreenState implements _MainScreenState {
                 other.recognizing == recognizing) &&
             (identical(other.recognizeFinished, recognizeFinished) ||
                 other.recognizeFinished == recognizeFinished) &&
-            (identical(other.text, text) || other.text == text));
+            (identical(other.userInput, userInput) ||
+                other.userInput == userInput) &&
+            (identical(other.aiResponse, aiResponse) ||
+                other.aiResponse == aiResponse) &&
+            const DeepCollectionEquality().equals(other._history, _history));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, recognizing, recognizeFinished, text);
+  int get hashCode => Object.hash(runtimeType, recognizing, recognizeFinished,
+      userInput, aiResponse, const DeepCollectionEquality().hash(_history));
 
   @JsonKey(ignore: true)
   @override
@@ -177,7 +227,9 @@ abstract class _MainScreenState implements MainScreenState {
   const factory _MainScreenState(
       {final bool recognizing,
       final bool recognizeFinished,
-      final String text}) = _$_MainScreenState;
+      final String userInput,
+      final String aiResponse,
+      final List<String> history}) = _$_MainScreenState;
 
   factory _MainScreenState.fromJson(Map<String, dynamic> json) =
       _$_MainScreenState.fromJson;
@@ -187,7 +239,11 @@ abstract class _MainScreenState implements MainScreenState {
   @override
   bool get recognizeFinished;
   @override
-  String get text;
+  String get userInput;
+  @override
+  String get aiResponse;
+  @override
+  List<String> get history;
   @override
   @JsonKey(ignore: true)
   _$$_MainScreenStateCopyWith<_$_MainScreenState> get copyWith =>

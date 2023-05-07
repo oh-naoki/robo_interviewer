@@ -9,7 +9,9 @@ abstract class MainScreenState with _$MainScreenState {
   const factory MainScreenState({
     @Default(false) bool recognizing,
     @Default(false) bool recognizeFinished,
-    @Default("---") String text,
+    @Default("---") String userInput,
+    @Default("---") String aiResponse,
+    @Default(<String>[]) List<String> history,
   }) = _MainScreenState;
 
   factory MainScreenState.fromJson(Map<String, dynamic> json) => _$MainScreenStateFromJson(json);
